@@ -45,6 +45,7 @@ class ElasticsearchOutput(Output):
         username: str = "",
         password: str = "",
         api_key: str = "",
+        verify_certs: bool = "",
         es_datastream_name: str = "",
         tags: list[str] = [],
         batch_max_actions: int = 500,
@@ -57,6 +58,7 @@ class ElasticsearchOutput(Output):
         self.username = username
         self.password = password
         self.api_key = api_key
+        self.verify_certs = verify_certs
         self.es_datastream_name = es_datastream_name
         self.tags = tags
         self.batch_max_actions = batch_max_actions
@@ -139,6 +141,17 @@ class ElasticsearchOutput(Output):
             raise ValueError("Elasticsearch Output api_key must be of type str")
 
         self._api_key = value
+        
+    @property
+    def verify_certs(self) -> bool:
+        return self._verify_certs
+    
+    @validate_certs.setter
+    def validate_certs(self, value: bool) -> None:
+        if not isinstance(value, bool):
+            raise ValueError("Elasticsearch Output validate_certs must be of type bool")
+        
+        self._validate_certs = value
 
     @property
     def es_datastream_name(self) -> str:
