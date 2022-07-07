@@ -67,9 +67,9 @@ class ElasticsearchShipper(CommonShipper):
             raise ValueError("You must provide one between username and password or api_key")
             
         if verify_certs:
-            es_client_kwargs["validate_certs"] = verify_certs
+            es_client_kwargs["verify_certs"] = verify_certs
         else:
-            es_client_kwargs["validate_certs"] = True
+            es_client_kwargs["verify_certs"] = True
 
         self._replay_args: dict[str, Any] = {}
 
