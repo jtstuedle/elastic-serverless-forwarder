@@ -270,6 +270,7 @@ inputs:
           api_key: "YXBpX2tleV9pZDphcGlfa2V5X3NlY3JldAo="
           username: "username"
           password: "password"
+          verify_certs: True
           es_datastream_name: "logs-generic-default"
           batch_max_actions: 500
           batch_max_bytes: 10485760
@@ -285,6 +286,7 @@ inputs:
           api_key: "YXBpX2tleV9pZDphcGlfa2V5X3NlY3JldAo="
           username: "username"
           password: "password"
+          verify_certs: True
           es_datastream_name: "logs-generic-default"
           batch_max_actions: 500
           batch_max_bytes: 10485760
@@ -300,6 +302,7 @@ inputs:
           api_key: "YXBpX2tleV9pZDphcGlfa2V5X3NlY3JldAo="
           username: "username"
           password: "password"
+          verify_certs: True
           es_datastream_name: "logs-generic-default"
           batch_max_actions: 500
           batch_max_bytes: 10485760
@@ -315,6 +318,7 @@ inputs:
           api_key: "YXBpX2tleV9pZDphcGlfa2V5X3NlY3JldAo="
           username: "username"
           password: "password"
+          verify_certs: True
           es_datastream_name: "logs-generic-default"
           batch_max_actions: 500
           batch_max_bytes: 10485760
@@ -351,6 +355,7 @@ For `elasticsearch` the following arguments are supported:
   * `args.username`: Username of the elasticsearch instance to connect to. Mandatory in case `args.api_key` is not provided. Will be ignored if `args.api_key` is defined as well.
   * `args.password` Password of the elasticsearch instance to connect to. Mandatory in case `args.api_key` is not provided. Will be ignored if `args.api_key` is defined as well.
   * `args.api_key`:  Api key of elasticsearch endpoint in the format **base64encode(api_key_id:api_key_secret)**. Mandatory in case `args.username`  and `args.password ` are not provided. Will take precedence over `args.username`/`args.password` if both are defined.
+  * `args.verify_certs: Enable or disable CA Certificate verification for the elasticsearch client. Default value: True
   * `args.es_datastream_name`: Name of data stream or the index where to forward the logs to. Lambda supports automatic routing of various AWS service logs to the corresponding data streams for further processing and storage in the Elasticsearch cluster. It supports automatic routing of `aws.cloudtrail`, `aws.cloudwatch_logs`, `aws.elb_logs`, `aws.firewall_logs`, `aws.vpcflow`, and `aws.waf` logs. For other log types, if using data streams, you can optionally set its value in the configuration file according to the naming convention for data streams and available integrations. If the `es_datastream_name` is not specified and it cannot be matched with any of the above AWS services, then the value will be set to "logs-generic-default". In version **v0.29.1** and earlier, this configuration parameter was named `es_index_or_datastream_name`. Rename the configuration parameter to `es_datastream_name` in your config.yaml file on the S3 bucket to continue using it in the future version. The older name `es_index_or_datastream_name` is deprecated as of version **v0.30.0**. The related backward compatibility code is removed from version **v1.0.0**.
   * `args.batch_max_actions`: Maximum number of actions to send in a single bulk request. Default value: 500
   * `args.batch_max_bytes`: Maximum size in bytes to send in a single bulk request. Default value: 10485760 (10MB)
