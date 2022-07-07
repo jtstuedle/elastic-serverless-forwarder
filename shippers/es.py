@@ -29,7 +29,7 @@ class ElasticsearchShipper(CommonShipper):
         password: str = "",
         cloud_id: str = "",
         api_key: str = "",
-        validate_certs: bool = "",
+        verify_certs: bool = "",
         es_datastream_name: str = "",
         tags: list[str] = [],
         batch_max_actions: int = 500,
