@@ -39,6 +39,7 @@ class ShipperFactory:
                 password=output.password,
                 cloud_id=output.cloud_id,
                 api_key=output.api_key,
+                verify_certs=output.verify_certs,
                 es_datastream_name=output.es_datastream_name,
                 tags=output.tags,
                 batch_max_actions=output.batch_max_actions,
