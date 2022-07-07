@@ -146,12 +146,12 @@ class ElasticsearchOutput(Output):
     def verify_certs(self) -> bool:
         return self._verify_certs
     
-    @validate_certs.setter
-    def validate_certs(self, value: bool) -> None:
+    @verify_certs.setter
+    def verify_certs(self, value: bool) -> None:
         if not isinstance(value, bool):
-            raise ValueError("Elasticsearch Output validate_certs must be of type bool")
+            raise ValueError("Elasticsearch Output verify_certs must be of type bool")
         
-        self._validate_certs = value
+        self._verify_certs = value
 
     @property
     def es_datastream_name(self) -> str:
