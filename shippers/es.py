@@ -29,6 +29,7 @@ class ElasticsearchShipper(CommonShipper):
         password: str = "",
         cloud_id: str = "",
         api_key: str = "",
+        validate_certs: bool = "",
         es_datastream_name: str = "",
         tags: list[str] = [],
         batch_max_actions: int = 500,
@@ -64,6 +65,8 @@ class ElasticsearchShipper(CommonShipper):
             es_client_kwargs["api_key"] = api_key
         else:
             raise ValueError("You must provide one between username and password or api_key")
+            
+        es_client_kwargs["validate_certs"] = verify_certs
 
         self._replay_args: dict[str, Any] = {}
 
